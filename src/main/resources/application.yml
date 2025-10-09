@@ -1,0 +1,32 @@
+#server:
+#  port: 8761
+#
+#spring:
+#  application:
+#    name: discovery-service
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+
+server:
+  port: 8761
+  address: 0.0.0.0  # Allows external access
+
+spring:
+  application:
+    name: discovery-service
+
+eureka:
+  instance:
+    hostname: ${HOSTNAME}  # Uses pod hostname (e.g., eureka-0)
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
